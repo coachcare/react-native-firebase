@@ -282,6 +282,13 @@ public class Utils {
     if (appProcesses == null) return false;
 
     final String packageName = context.getPackageName();
+
+    String className = activityManager.getRunningTasks(1).get(0).topActivity.getShortClassName();
+
+    if (className.equals(".PromptVideoActivity")) {
+      return false;
+    }
+    
     for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
       if (
         appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
